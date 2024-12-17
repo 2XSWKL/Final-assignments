@@ -89,13 +89,13 @@ void add_std(HEAD* head)
 
 	printf("请输入学生姓名\n");
 	scanf("%4s", new_node->student->name);
-	printf("请输入学生第一门课的成绩\n");
+	printf("请输入语文成绩\n");
 	scanf("%d", new_node->student->grade[0]);
-	printf("请输入学生第二门课的成绩\n");
+	printf("请输入数学成绩\n");
 	scanf("%d", new_node->student->grade[1]);
-	printf("请输入学生第三门课的成绩\n");
+	printf("请输入英语成绩\n");
 	scanf("%d", new_node->student->grade[2]);
-	printf("请输入学生第四门课的成绩\n");
+	printf("请输入体育成绩\n");
 	scanf("%d", new_node->student->grade[3]);
 	printf("添加成功！\n");
 

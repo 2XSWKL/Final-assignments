@@ -1,18 +1,3 @@
-//链表头
-typedef struct head
-{
-	int total;
-	NODE* end;
-	NODE* next;
-}HEAD;
-
-//链表节点
-typedef struct node
-{
-	Student* student;
-	NODE* next;
-}NODE;
-
 //学生信息
 typedef struct student
 {
@@ -20,6 +5,21 @@ typedef struct student
 	char name[20];
 	int grade[3];
 }Student;
+
+//链表节点
+typedef struct node
+{
+	Student* student;
+	struct node* next;
+}NODE;
+
+//链表头
+typedef struct head
+{
+	int total;
+	NODE* end;
+	NODE* next;
+}HEAD;
 
 //加载学生信息
 HEAD* load_std();

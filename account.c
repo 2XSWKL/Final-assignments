@@ -23,24 +23,25 @@ int loadAccounts(Account adminers[], int size)
 }
 
 //创建账号
-void create_account(Account adminer, int count)
+void create_account(Account adminer[], int count)
 {
+	printf("创建账号\n");
 	if (count >= 10) 
 	{
 		printf("管理员账号最多10个\n");
 		return;
 	}
 	printf("请输入账户(8位):");
-	scanf("%s", adminer.username);
+	scanf("%s", adminer[count].username);
 	printf("请输入密码(8位):");
-	scanf("%s", adminer.password);
+	scanf("%s", adminer[count].password);
 	FILE* file;
-	if ((file = fopen("accounts.dat", "a")) == NULL)
+	if ((file = fopen("accounts.dat", "ab")) == NULL)
 	{
 		fputs("无法打开账号文件\n", stderr);
 		exit(1);
 	}
-	fwrite(&adminer, sizeof(Account), 1, file);
+	fwrite(&adminer[count], sizeof(Account), 1, file);
 	fclose(file);
 	printf("添加成功!下次运行时生效");
 	return;
@@ -62,25 +63,28 @@ int encrypt(int password)
 //登陆账号
 void login(Account adminer[], int count)
 {
-	Account adminers[10];
-	int size = 0;
-	size = loadAccounts(adminers, 10);
 	char temp[9];
+	printf("请输入用户名:\n");
 	scanf("%8s", temp);
-	for (int i = 0;i < size ; i++)
+	for (int i = 0; i < count; i++) 
 	{
-		for (int j = 0; strcmp(temp, adminers[i].username) == 0 && j < 3; j++)
+		if (strcmp(temp, adminer[i].username) == 0) 
 		{
 			printf("请输入密码(三次机会):\n");
-			scanf("%8s", &temp);
-			if (strcmp(temp, adminers[i].password) == 0)
+			for (int j = 0; j < 3; j++) 
 			{
-				printf("登陆成功!\n");
-				return;
+				scanf("%8s", temp);
+				if (strcmp(temp, adminer[i].password) == 0) 
+				{
+					printf("登录成功!\n");
+					return;
+				}
 			}
+			printf("登录失败，密码错误三次。\n");
+			return;
 		}
 	}
-	printf("未检索到账户");
+	printf("未检索到账户。\n");
 	exit(0);
 }
 
