@@ -5,4 +5,4 @@ void rec_time(char username[]);
 void display_log();
 
 //±£¥Ê»’÷æ
-void save_log();
+void save_log(char username[]);

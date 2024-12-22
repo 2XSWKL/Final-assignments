@@ -32,9 +32,9 @@ void create_account(Account adminer[], int count)
 		return;
 	}
 	printf("ÇëÊäÈëÕË»§(8Î»):");
-	scanf("%s", adminer[count].username);
+	scanf("%9s", adminer[count].username);
 	printf("ÇëÊäÈëÃÜÂë(8Î»):");
-	scanf("%s", adminer[count].password);
+	scanf("%9s", adminer[count].password);
 	FILE* file;
 	if ((file = fopen("accounts.dat", "ab")) == NULL)
 	{
@@ -47,21 +47,8 @@ void create_account(Account adminer[], int count)
 	return;
 }
 
-//É¾³ıÕËºÅ
-void del_account(Account adminer)
-{
-
-}
-
-//ÃÜÂë¼ÓÃÜ
-int encrypt(int password)
-{
-	int encrypted_pd = password;
-	return encrypted_pd;
-}
-
 //µÇÂ½ÕËºÅ
-void login(Account adminer[], int count)
+char* login(Account adminer[], int count)
 {
 	char temp[9];
 	printf("ÇëÊäÈëÓÃ»§Ãû:\n");
@@ -77,7 +64,7 @@ void login(Account adminer[], int count)
 				if (strcmp(temp, adminer[i].password) == 0) 
 				{
 					printf("µÇÂ¼³É¹¦!\n");
-					return;
+					return adminer[i].username;
 				}
 			}
 			printf("µÇÂ¼Ê§°Ü£¬ÃÜÂë´íÎóÈı´Î¡£\n");
@@ -86,10 +73,4 @@ void login(Account adminer[], int count)
 	}
 	printf("Î´¼ìË÷µ½ÕË»§¡£\n");
 	exit(0);
-}
-
-//×ÜÀÀÕËºÅ
-void list_accounts(Account adminer, int count)
-{
-
 }

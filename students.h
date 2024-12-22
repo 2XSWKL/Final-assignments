@@ -2,8 +2,8 @@
 typedef struct student
 {
 	int ID;
-	char name[20];
-	int grade[3];
+	char name[21];
+	int grade[4];
 }Student;
 
 //链表节点
@@ -31,7 +31,7 @@ HEAD* load_del_std();
 void add_std(HEAD* head);
 
 //从文件添加学生
-
+void add_std_from_file(HEAD* head, char* filename);
 
 //更改学生信息
 void change_std(HEAD* head);
@@ -52,7 +52,7 @@ void sort_std_by_grades(HEAD* Head, int subject);
 void sort_std_by_id(HEAD* Head);
 
 //显示课程最低，最高，平均分
-
+void display_grades(HEAD* head);
 
 //保存学生信息
-void save_std(HEAD* Head);
+void save_std(HEAD* Head, HEAD* del_head);
